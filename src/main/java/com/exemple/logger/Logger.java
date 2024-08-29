@@ -1,10 +1,16 @@
 package com.exemple.logger;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Logger {
+
     private static Logger instance;
 
+    private List<String> logs;
+
     private Logger() {
-        // Приватний конструктор
+        logs = new ArrayList<>();
     }
 
     public static Logger getInstance() {
@@ -14,7 +20,13 @@ public class Logger {
         return instance;
     }
 
+
     public void log(String message) {
+        logs.add(message);
         System.out.println("Log: " + message);
+    }
+
+    public List<String> getLogs() {
+        return new ArrayList<>(logs);
     }
 }
